@@ -10,16 +10,19 @@ export async function request(path, options = {}) {
 }
 
 export const getContents = (data) =>
-    request("/contents", { method: "GET", body: JSON.stringify(data) });
+    request("/contents", {
+        method: "GET",
+        body: JSON.stringify(data)
+    });
 
 export const updateContent = (data, id) =>
-    request("/contents", { method: "PUT", body: JSON.stringify(data) });
+    request("/contents" + id, { method: "PUT", body: JSON.stringify(data) });
 
 export const createContent = (data) =>
     request("/contents", { method: "POST", body: JSON.stringify(data) });
 
 export const deleteContent = (data, id) =>
-    request("/contents", { method: "DELETE", body: JSON.stringify(data) });
+    request(`/contents/${id}`, { method: "DELETE", body: JSON.stringify(data) });
 
 export const getComments = (data) =>
     request("/contents", { method: "POST", body: JSON.stringify(data) });
